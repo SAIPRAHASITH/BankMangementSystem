@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>With Draw Your Amount</title>
+ <link rel="stylesheet" href="/CSS/withDraw.css"> 
+</head>
+<body>
+<form action="/withdrawing" method="post">  
+        <div class="container">
+            <h2>WithDraw Amount</h2>
+            <input type="text" id="amount" name="value" readonly placeholder="Enter Amount">
+            <div class="keypad">
+                <button type="button" onclick="appendNumber(1)">1</button>
+                <button type="button" onclick="appendNumber(2)">2</button>
+                <button type="button" onclick="appendNumber(3)">3</button>
+                <button type="button" onclick="appendNumber(4)">4</button>
+                <button type="button" onclick="appendNumber(5)">5</button>
+                <button type="button" onclick="appendNumber(6)">6</button>
+                <button type="button" onclick="appendNumber(7)">7</button>
+                <button type="button" onclick="appendNumber(8)">8</button>
+                <button type="button" onclick="appendNumber(9)">9</button>
+                <button type="button" onclick="clearInput()">C</button>
+                <button type="button" onclick="appendNumber(0)">0</button>
+                <button type="button" onclick="deleteLast()">⌫</button>
+            </div>
+            <button type="submit" class="deposit-btn">Withdraw</button>
+        </div>
+    </form>
+      <p class="error-message" th:if="${withdraw}" th:text="${withdraw}"></p>
+    <script>
+       
+    function appendNumber(num) {
+        document.getElementById("amount").value += num;
+    }
+
+    function clearInput() {
+        document.getElementById("amount").value = "";
+    }
+
+    function deleteLast() {
+        let input = document.getElementById("amount");
+        input.value = input.value.slice(0, -1);
+    }
+
+
+
+          
+            
+    </script>
+</body>
+</html>

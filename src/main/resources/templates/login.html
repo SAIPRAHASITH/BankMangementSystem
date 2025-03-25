@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank of Corporation - Login</title>
+    <link rel="stylesheet" href="/CSS/logincss.css">      
+</head>
+<body>
+    <!-- Bank Logo & Title -->
+    <div class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/2239/2239072.png" alt="Bank Logo"> 
+        <h1>Bank of Corporation</h1>
+    </div>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/logging" method="post">
+            <div class="input-group">
+                <label>Enter Your Account Number:</label>
+                <input type="text" name="id" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Password:</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+        </form>
+
+        <p class="error-message" th:if="${error}" th:text="${error}"></p>
+
+        <p class="register">New User? <a th:href="@{/register}">Register</a></p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bank of Corporation - Register</title>
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+
+    <div class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/2239/2239072.png" alt="Bank Logo"> 
+        <h1>Bank of Corporation</h1>
+    </div>
+
+    <div class="register-container">
+        <h2>Register</h2>
+        <form action="/registering" method="post" onsubmit="return validatePassword()">
+            <div class="input-group">
+                <label>Name of Account Holder</label>
+                <input type="text" name="name" placeholder="Enter Your Full Name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Enter Email or Username:</label>
+                <input type="text" name="username" placeholder="Enter Your Username" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password:</label>   
+                <input type="password" id="password" name="password" placeholder="Enter Your Password" required>
+                <p id="password-error" class="error-message"></p>
+            </div>
+
+            <button type="submit" class="btn" onclick="addMessage()">Sign Up</button>
+        </form>
+
+        <p class="success-message"></p>
+    </div>
+
+    <script src="/Script/register.js"></script>
+
+</body>
+</html>

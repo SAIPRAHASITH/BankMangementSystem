@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    text-align: center;
+}
+
+/* Header */
+.header {
+    background: #004080;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header img {
+    width: 50px;
+    height: 50px;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+/* Account Container */
+.account-container {
+    background: white;
+    width: 40%;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.account-container h2 {
+    color: #28a745;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* User Details */
+.details {
+    text-align: left;
+    margin: 20px auto;
+    width: 80%;
+    font-size: 18px;
+}
+
+.details p {
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Button */
+.account-container a {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-top: 20px;
+    background: #004080;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.account-container a:hover {
+    background: #003366;
+}

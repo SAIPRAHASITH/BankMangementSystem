@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Account</title>
+    <link rel="stylesheet" href="/CSS/AccountHolder.css"> 
+</head>
+<body>
+    <div class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/2239/2239072.png" alt="Bank Logo">
+        <h1>Bank of Corporation-India</h1>
+    </div>
+    <div class="account-container">
+        <h2>Account Details</h2>
+        <p><strong>Account ID:</strong> <span th:text="${user.id}"></span></p>
+        <p><strong>Name:</strong> <span th:text="${user.name}"></span></p>
+    </div>
+    
+    <form action="/checkbalance" method="get">
+        <button type="submit">Check Balance</button>
+    </form>
+    
+    <div class="link-button">
+        <a th:href="@{/deposite}">Deposit Amount</a>
+    </div>
+    <div class="link-button">
+        <a th:href="@{/Withdraw}">Withdraw Amount</a>
+    </div>
+</body>
+</html>

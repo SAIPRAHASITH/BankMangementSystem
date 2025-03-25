@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Balance</title>
+    <link rel="stylesheet" href="/CSS/balance.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <div class="header">
+        <h1>Your Account Balance</h1>
+    </div>
+
+    <div class="balance-container">
+        <h2>Current Balance: ₹<span th:text="${balance}"></span></h2>
+        <a href="javascript:history.back()" class="home-btn">Go to Home</a>
+
+    </div>
+</body>
+</html>
