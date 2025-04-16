@@ -19,8 +19,9 @@ public class AccounterService {
 	}
 	
 	public AccountHolder findById(long id) {
-		Optional<AccountHolder> acc=accountant.findById(id);
-		return acc.get();
+		
+		return accountant.findById(id)
+	            .orElse(null);
 	}
 	public boolean deposite(double amount,Long id) {
 		Optional<AccountHolder> acc=accountant.findById(id);
@@ -57,4 +58,34 @@ public class AccounterService {
 	}
 		return status;
 
-}}
+}
+
+	public String transfermoney(long id1, long id2, String amount) {
+		String message="";
+		Optional<AccountHolder> acc1=accountant.findById(id1);
+		Optional<AccountHolder> acc2=accountant.findById(id2);
+		double Amount=Double.parseDouble(amount);
+		if(acc1!=null) {
+			AccountHolder sender=acc1.get();
+			AccountHolder receiver=acc2.get();
+			if(Amount<=sender.getAccount_Balance()) {
+				double senderbalance=sender.getAccount_Balance()-Amount;
+				sender.setAccount_Balance(senderbalance);
+				double receiverbalance=receiver.getAccount_Balance()+Amount;
+				receiver.setAccount_Balance(receiverbalance);
+				accountant.save(sender);
+				accountant.save(receiver);
+				message="Successfully Send Amount";
+				
+			}
+			else {
+				message="Insuffcient Account Balance";
+			}
+		}
+		else {
+			message="Invalid user";
+		}
+			
+		
+		return message;		
+	}}

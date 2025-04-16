@@ -1,0 +1,112 @@
+@charset "UTF-8";
+  /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Page background and container */
+body {
+    background: linear-gradient(to bottom right, #e0f7fa, #80deea);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header styles */
+.header {
+    width: 100%;
+    background-color: #00796b;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.header img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Container for form */
+.container {
+    margin-top: 40px;
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    width: 320px;
+    text-align: center;
+}
+
+.container h2 {
+    margin-bottom: 20px;
+    color: #00796b;
+}
+
+/* Input field */
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border: 2px solid #b2dfdb;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f1fefb;
+}
+
+/* Keypad styling */
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.keypad button {
+    padding: 15px 0;
+    font-size: 18px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.keypad button:hover {
+    background-color: #004d40;
+}
+
+/* Submit Button */
+.deposit-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    background-color: #004d40;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.deposit-btn:hover {
+    background-color: #00251a;
+}
+
+/* Error message */
+.error-message {
+    color: red;
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+}

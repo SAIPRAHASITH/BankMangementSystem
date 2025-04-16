@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Receiver_Details</title>
+<link rel="stylesheet" href="/CSS/Transfer2.css">
+</head>
+<body>
+   <div class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/2239/2239072.png" alt="Bank Logo"> 
+        <h1>Bank of Corporation</h1>
+    </div>
+
+    <div class="account container">
+       <div class="details">
+           <p>Receiver Bank Account ID</p>
+           <span th:text="${loggedreciver.id}"></span>
+           <p>Receiver Bank Account Name</p>
+           <span th:text="${loggedreciver.name}"></span> 
+       </div>
+    </div>
+
+    <div style="text-align: center;">
+        <button><a href="javascript:history.back()" class="home-btn">&larr; Go Back</a></button>
+        <form th:action="@{/transfer3}" method="get">
+    <button type="submit">Proceed &rarr;</button>
+</form>
+        
+    </div>
+</body>
+</html>

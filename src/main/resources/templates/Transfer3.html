@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Transfer Money</title>
+<link rel="stylesheet" href="/CSS/Transfer3.css"> 
+</head>
+<body>
+    <div class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/2239/2239072.png" alt="Bank Logo"> 
+        <h1>Bank of Corporation</h1>
+    </div>   
+      <form action="/Amountsent" method="post">  
+        <div class="container">
+            <h2>Amount</h2>
+            <input type="text" id="amount" name="Amount" readonly placeholder="Enter Amount">
+            <div class="keypad">
+                <button type="button" onclick="appendNumber(1)">1</button>
+                <button type="button" onclick="appendNumber(2)">2</button>
+                <button type="button" onclick="appendNumber(3)">3</button>
+                <button type="button" onclick="appendNumber(4)">4</button>
+                <button type="button" onclick="appendNumber(5)">5</button>
+                <button type="button" onclick="appendNumber(6)">6</button>
+                <button type="button" onclick="appendNumber(7)">7</button>
+                <button type="button" onclick="appendNumber(8)">8</button>
+                <button type="button" onclick="appendNumber(9)">9</button>
+                <button type="button" onclick="clearInput()">C</button>
+                <button type="button" onclick="appendNumber(0)">0</button>
+                <button type="button" onclick="deleteLast()">⌫</button>
+            </div>
+            <button type="submit" class="deposit-btn">Sent Money</button>
+        </div>
+    </form>
+       <p class="success-message" th:if="${successMessage}" th:text="${successMessage}"></p>
+<p class="error-message" th:if="${errorMessage}" th:text="${errorMessage}"></p>
+     <form action="/goback" method="get">
+    <button type="submit" class="back-btn">Go back to Home</button>
+</form>
+
+   <script>
+    function appendNumber(num) {
+        document.getElementById("amount").value += num;
+    }
+
+    function clearInput() {
+        document.getElementById("amount").value = "";
+    }
+
+    function deleteLast() {
+        let input = document.getElementById("amount");
+        input.value = input.value.slice(0, -1);
+    }
+</script>
+ 
+</body>
+</html>

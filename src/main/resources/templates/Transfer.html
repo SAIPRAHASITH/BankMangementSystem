@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Transfer Money</title>
+<link rel="stylesheet" href="/CSS/Transfer.css"> 
+</head>
+<body>
+    <div class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/2239/2239072.png" alt="Bank Logo"> 
+        <h1>Bank of Corporation</h1>
+    </div>   
+      <form action="/Transfering" method="post">  
+        <div class="container">
+            <h2>Destination Account</h2>
+            <input type="text" id="account_no" name="Account_No" readonly placeholder="Enter Account Holder no">
+            <div class="keypad">
+                <button type="button" onclick="appendNumber(1)">1</button>
+                <button type="button" onclick="appendNumber(2)">2</button>
+                <button type="button" onclick="appendNumber(3)">3</button>
+                <button type="button" onclick="appendNumber(4)">4</button>
+                <button type="button" onclick="appendNumber(5)">5</button>
+                <button type="button" onclick="appendNumber(6)">6</button>
+                <button type="button" onclick="appendNumber(7)">7</button>
+                <button type="button" onclick="appendNumber(8)">8</button>
+                <button type="button" onclick="appendNumber(9)">9</button>
+                <button type="button" onclick="clearInput()">C</button>
+                <button type="button" onclick="appendNumber(0)">0</button>
+                <button type="button" onclick="deleteLast()">⌫</button>
+            </div>
+            <button type="submit" class="deposit-btn">Transfer</button>
+        </div>
+    </form>
+      <p class="error-message"  th:if="${transfer}" th:text="${transfer}"></p>
+   <script>
+    function appendNumber(num) {
+        document.getElementById("account_no").value += num;
+    }
+
+    function clearInput() {
+        document.getElementById("account_no").value = "";
+    }
+
+    function deleteLast() {
+        let input = document.getElementById("account_no");
+        input.value = input.value.slice(0, -1);
+    }
+</script>
+ 
+</body>
+</html>
