@@ -64,6 +64,10 @@ public class UserController {
 	public String showTransferPage() {
 	    return "Transfer3";
 	}
+	@GetMapping("/Transactions")
+	public String showTransactionHistory() {
+	    return "redirect:/History";
+	}
 	@PostMapping("/logging")
 	public String login(@RequestParam String id, @RequestParam String password, Model model) {
 		
@@ -194,6 +198,13 @@ public class UserController {
 		}
     
 }
+    @GetMapping("/History")
+    public String viewTestCasesdata(Model model) {
+    	AccountHolder a=(AccountHolder)session.getAttribute("accountholder");
+    	  model.addAttribute("TransactionHistory",accountadding.getAllRecords(a.getId()));
+    	  return "TransactionHistory";
+    }
+   
   @GetMapping("/goback")
   public String home() {
 	  return "login";

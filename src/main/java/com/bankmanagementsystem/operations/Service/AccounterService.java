@@ -1,18 +1,26 @@
 package com.bankmanagementsystem.operations.Service;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bankmanagementsystem.operations.DTO.UserAccountRepository;
 import com.bankmanagementsystem.operations.DTO.UserRepository;
+import com.bankmanagementsystem.operations.DTO.transactionRepository;
 import com.bankmanagementsystem.operations.Model.AccountHolder;
+import com.bankmanagementsystem.operations.Model.TransactionHistory;
 @Service
 public class AccounterService {
 	
 	private UserAccountRepository accountant;
+	@Autowired
+	private transactionRepository tranascations;
 	
-	public AccounterService(UserAccountRepository accountant, UserRepository userRepository) {
+	
+
+	public AccounterService(UserAccountRepository accountant, UserRepository userRepository,TransactionHistory t1) {
 	
 		this.accountant = accountant;
 		
@@ -24,12 +32,19 @@ public class AccounterService {
 	            .orElse(null);
 	}
 	public boolean deposite(double amount,Long id) {
+		
 		Optional<AccountHolder> acc=accountant.findById(id);
 		if(acc!=null) {
 		AccountHolder depositer=acc.get();
 		double balance=depositer.getAccount_Balance()+amount;
 		depositer.setAccount_Balance(balance);
 		System.out.println(depositer.getAccount_Balance());
+		TransactionHistory t1=new TransactionHistory();
+		t1.setBankid(id);
+		t1.setTranasction_type("deposite");
+		t1.setAmount(amount);
+		t1.setReciver_BankId("Self");
+		tranascations.save(t1);
 		accountant.save(depositer);
 		return true;
 		}
@@ -44,12 +59,17 @@ public class AccounterService {
 		boolean status=false;
 		Optional<AccountHolder> acc=accountant.findById(id);
 		if(acc!=null) {
-		AccountHolder depositer=acc.get();
-		if(amount<=depositer.getAccount_Balance()) {
-			double balance=depositer.getAccount_Balance()-amount;
-			depositer.setAccount_Balance(balance);
-		    System.out.println(depositer.getAccount_Balance());
-		    accountant.save(depositer);
+		AccountHolder withdrawer=acc.get();
+		if(amount<=withdrawer.getAccount_Balance()) {
+			double balance=withdrawer.getAccount_Balance()-amount;
+			withdrawer.setAccount_Balance(balance);
+			TransactionHistory t1=new TransactionHistory();
+			t1.setBankid(id);
+			t1.setTranasction_type("WithDraw");
+			t1.setAmount(amount);
+			t1.setReciver_BankId("Self");
+			tranascations.save(t1);
+		    accountant.save(withdrawer);
 		   status=true;
 		}
 		else {
@@ -71,8 +91,20 @@ public class AccounterService {
 			if(Amount<=sender.getAccount_Balance()) {
 				double senderbalance=sender.getAccount_Balance()-Amount;
 				sender.setAccount_Balance(senderbalance);
+				TransactionHistory t1=new TransactionHistory();
+				t1.setBankid(id1);
+				t1.setTranasction_type("Send");
+				t1.setAmount(Double.parseDouble(amount));
+				t1.setReciver_BankId(String.valueOf(id2));
+				tranascations.save(t1);
 				double receiverbalance=receiver.getAccount_Balance()+Amount;
 				receiver.setAccount_Balance(receiverbalance);
+				TransactionHistory t2=new TransactionHistory();
+				t2.setBankid(id2);
+				t2.setTranasction_type("Receive");
+				t2.setAmount(Double.parseDouble(amount));
+				t2.setReciver_BankId(String.valueOf(id1));
+				tranascations.save(t2);
 				accountant.save(sender);
 				accountant.save(receiver);
 				message="Successfully Send Amount";
@@ -88,4 +120,8 @@ public class AccounterService {
 			
 		
 		return message;		
-	}}
+	}
+	public List<TransactionHistory> getAllRecords(long id){
+	   return tranascations.finbByid(id);
+	}
+	}

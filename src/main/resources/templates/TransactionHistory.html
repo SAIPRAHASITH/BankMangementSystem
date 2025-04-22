@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tranasction History</title>
+ <link rel="stylesheet" href="/css/history.css">
+</head>
+<body>
+ <div class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/2239/2239072.png" alt="Bank Logo"> 
+        <h1>Bank of Corporation</h1>
+    </div> 
+<table border="1">
+    <tr>
+       
+        <th>BankId</th>
+        <th>Amount</th>
+        <th>transction-type</th>
+      <th> Reciver_BankId</th>
+    </tr>
+     <tr th:each="entry : ${TransactionHistory}">         
+            <td th:text="${entry.bankid}"></td>
+            <td th:text="${entry.amount}"></td>
+            <td th:text="${entry.tranasction_type!= null ? entry.tranasction_type : 'N/A'}"></td>
+            <td th:text="${entry.Reciver_BankId!=null?entry.Reciver_BankId	:'N/A'}"></td>
+        </tr>
+</table>
+
+</body>
+</html>
